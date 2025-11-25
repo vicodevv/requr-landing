@@ -2,6 +2,7 @@
 
 import Marquee from 'react-fast-marquee'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function ServiceBanner() {
   const row1 = [
@@ -24,16 +25,16 @@ export default function ServiceBanner() {
   ]
 
   const ServiceItem = ({ service }: { service: typeof row1[0] }) => (
-    <div className="flex items-center gap-4 mx-8 group cursor-pointer transition-all duration-300">
+    <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mx-4 sm:mx-6 md:mx-8 group cursor-pointer transition-all duration-300">
       <Image
         src={service.logo}
         alt={service.name}
         width={80}
         height={80}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+        className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain transition-transform duration-300 group-hover:scale-110"
       />
       <span 
-        className="text-3xl md:text-5xl font-medium text-black transition-all duration-300 group-hover:font-bold group-hover:scale-110"
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-black transition-all duration-300 group-hover:font-bold group-hover:scale-110 whitespace-nowrap"
         style={{
           WebkitTextStroke: '0px transparent',
         }}
@@ -46,49 +47,49 @@ export default function ServiceBanner() {
       >
         {service.text}
       </span>
-      <span className="text-2xl text-gray-400 ml-4">◦</span>
+      <span className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 ml-2 sm:ml-3 md:ml-4">◦</span>
     </div>
   )
 
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-white overflow-hidden">
       <div className="max-w-full mx-auto">
-        <h2 className="text-4xl md:text-5xl font-medium text-center mb-16 text-black">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-center mb-10 sm:mb-12 md:mb-16 text-black px-4">
           Subscriptions like
         </h2>
 
         {/* Row 1 - Left Direction */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-5 md:mb-6">
           <Marquee
-            speed={40}
+            speed={30}
             gradient={false}
             pauseOnHover={true}
             direction="left"
           >
-            {[...row1, ...row1, ...row1].map((service, index) => (
+            {[...row1, ...row1, ...row1, ...row1].map((service, index) => (
               <ServiceItem key={`row1-${service.name}-${index}`} service={service} />
             ))}
           </Marquee>
         </div>
 
         {/* Row 2 - Right Direction */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-5 md:mb-6">
           <Marquee
-            speed={40}
+            speed={30}
             gradient={false}
             pauseOnHover={true}
             direction="right"
           >
-            {[...row2, ...row2, ...row2].map((service, index) => (
+            {[...row2, ...row2, ...row2, ...row2].map((service, index) => (
               <ServiceItem key={`row2-${service.name}-${index}`} service={service} />
             ))}
           </Marquee>
         </div>
 
         {/* Row 3 - Left Direction */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-10 md:mb-12">
           <Marquee
-            speed={40}
+            speed={30}
             gradient={false}
             pauseOnHover={true}
             direction="left"
@@ -100,10 +101,12 @@ export default function ServiceBanner() {
         </div>
 
         {/* CTA Button */}
-        <div className="flex justify-center mt-16">
-          <button className="bg-[#1A1D2E] hover:bg-[#14161F] text-white px-10 py-4 rounded-lg text-base font-medium transition-colors shadow-lg">
-            Join our waitlist
-          </button>
+        <div className="flex justify-center mt-10 sm:mt-12 md:mt-16">
+          <Link href="/join">
+            <button className="bg-[#1A1D2E] hover:bg-[#14161F] text-white px-8 py-3 sm:px-10 sm:py-4 rounded-lg text-sm sm:text-base font-medium transition-colors shadow-lg">
+              Join our waitlist
+            </button>
+          </Link>
         </div>
       </div>
     </section>

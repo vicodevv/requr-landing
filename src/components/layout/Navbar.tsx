@@ -26,7 +26,7 @@ export default function Navbar() {
           : 'bg-transparent'
       )}
     >
-      <div className="max-w-[1400px] mx-auto px-8 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -35,14 +35,16 @@ export default function Navbar() {
               alt="Requr Logo"
               width={150}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain"
+              priority
             />
           </Link>
 
           {/* CTA Button */}
           <Link href="/join" className="no-underline">
-            <button className="text-white text-sm font-medium hover:opacity-80 transition-opacity">
-              Join our waitlist
+            <button className="text-white text-xs sm:text-sm font-medium hover:opacity-80 transition-opacity px-3 py-2 sm:px-4 sm:py-2 md:px-0 md:py-0 rounded-md sm:rounded-none bg-white/10 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none">
+              <span className="hidden sm:inline">Join our waitlist</span>
+              <span className="sm:hidden">Join waitlist</span>
             </button>
           </Link>
         </div>
